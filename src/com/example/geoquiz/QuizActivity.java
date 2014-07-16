@@ -5,11 +5,26 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class QuizActivity extends Activity {
 	
 	private Button mTrueButton;
 	private Button mFalseButton;
+	private Button mNextButton;
+	private TextView mQuestionTextView;
+	
+	private TrueFalse[] mQuestionBank = new TrueFalse[] {
+			new TrueFalse(R.string.question_africa, true),
+			new TrueFalse(R.string.question_americas, false),
+			new TrueFalse(R.string.question_asia, true),
+			new TrueFalse(R.string.question_oceans, true),
+			new TrueFalse(R.string.question_mideast, false),
+	};
+	
+	private int mCurrentIndex = 0;
+	
 	
 
 	@Override
@@ -23,6 +38,7 @@ public class QuizActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Toast.makeText(QuizActivity.this, R.string.correct_toast, Toast.LENGTH_SHORT).show();
 				
 			}
 		});
@@ -32,7 +48,7 @@ public class QuizActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+				Toast.makeText(QuizActivity.this, R.string.incorrect_toast, Toast.LENGTH_SHORT).show();
 			}
 		});
 	}
